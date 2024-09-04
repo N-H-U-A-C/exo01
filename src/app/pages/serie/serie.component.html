@@ -1,5 +1,5 @@
 <ul>
-  @for (serie of series | sort: sort; track series) {
+  @for (serie of series | sort: sort; track serie) {
     <li>{{serie}} <button (click)="remove(serie)">-</button></li>
   } @empty {
   <p>There is no serie!</p>

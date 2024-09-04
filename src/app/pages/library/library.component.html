@@ -1,5 +1,5 @@
 <ul>
-  @for (book of library; track library) {
+  @for (book of library; track book) {
     <li>
       <span [class]="book.isRead ? 'underline' : ''">{{book.title | thumbs:book.isRead}}</span> ({{book.author}})
       <button (click)="toggleIsRead(book)">{{book.isRead ? "Not read" : "Read"}}</button>
@@ -8,3 +8,22 @@
     <p>There is no book!</p>
   }
 </ul>
+<form (ngSubmit)="submitBook()">
+  <div>
+    <label for="title">Title</label>
+    <input [(ngModel)]="book.title" id="title" name="title">
+    @if (titleHasError) {
+      <small class="error">Title needed!</small>
+    }
+  </div>
+  <div>
+    <label for="author">Author</label>
+    <input [(ngModel)]="book.author" id="author" name="author">
+    @if (authorHasError) {
+      <small class="error">Author needed!</small>
+    }
+  </div>
+  <div>
+    <button>Add a book</button>
+  </div>
+</form>
