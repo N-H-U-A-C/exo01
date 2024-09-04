@@ -1,0 +1,29 @@
+<form [formGroup]="pokemonForm" (ngSubmit)="savePokemon()">
+  <div>
+    <label for="pokemon-name">Pokemon Name: </label>
+    <input id="pokemon-name" formControlName="pokemonName">
+  </div>
+  <div>
+    <label for="pokemon-desc">Pokemon Description: </label>
+    <input id="pokemon-desc" formControlName="pokemonDesc">
+  </div>
+
+  <div>
+    <label for="pokemon-type">Pokemon Type: </label>
+    <input id="pokemon-type" formControlName="pokemonType">
+  </div>
+
+  <fieldset formGroupName="area">
+    <legend>Area</legend>
+    <div>
+      <label for="area-name">Area Name: </label>
+      <input id="area-name" formControlName="areaName">
+    </div>
+    <div>
+      <label for="area-region">Area Region: </label>
+      <input id="area-region" formControlName="areaRegion">
+    </div>
+  </fieldset>
+
+  <div><button>Save</button></div>
+</form>
