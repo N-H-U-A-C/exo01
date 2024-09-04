@@ -1,0 +1,10 @@
+<ul>
+  @for (book of library; track library) {
+    <li>
+      <span [class]="book.isRead ? 'underline' : ''">{{book.title | thumbs:book.isRead}}</span> ({{book.author}})
+      <button (click)="toggleIsRead(book)">{{book.isRead ? "Not read" : "Read"}}</button>
+    </li>
+  } @empty {
+    <p>There is no book!</p>
+  }
+</ul>
