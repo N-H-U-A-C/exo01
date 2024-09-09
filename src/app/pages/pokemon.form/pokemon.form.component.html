@@ -9,9 +9,36 @@
   </div>
 
   <div>
-    <label for="pokemon-type">Pokemon Type: </label>
-    <input id="pokemon-type" formControlName="pokemonType">
+<!--    <label for="pokemon-type">Pokemon Type: </label>-->
+<!--    <input id="pokemon-type" formControlName="pokemonType">-->
+    <select id="pokemon-type" multiple formControlName="pokemonType">
+      @for (type of types; track type) {
+        <option [value]="type">{{type}}</option>
+      }
+    </select>
   </div>
+
+  <fieldset formArrayName="attacks">
+    <legend>Attacks</legend>
+    @for (attack of pokemonForm.controls.attacks.controls; track attack) {
+      <fieldset [formGroupName]="$index">
+        <legend>Attack</legend>
+        <div>
+          <label [for]="'attack-name' + $index">Attack Name: </label>
+          <input [id]="'attack-name' + $index" formControlName="attackName">
+        </div>
+        <div>
+          <label [for]="'attack-desc' + $index">Attack Description: </label>
+          <input [id]="'attack-desc' + $index" formControlName="attackDesc">
+        </div>
+        <div>
+          <label [for]="'attack-damage' + $index">Attack Damage: </label>
+          <input type="number" [id]="'attack-damage' + $index" formControlName="attackDamage">
+        </div>
+        <div><button (click)="addAttack()" type="button">Add an attack</button></div>
+      </fieldset>
+      }
+  </fieldset>
 
   <fieldset formGroupName="area">
     <legend>Area</legend>
@@ -25,5 +52,5 @@
     </div>
   </fieldset>
 
-  <div><button>Save</button></div>
+  <div><button>Add the Pokemon</button></div>
 </form>
